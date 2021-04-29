@@ -20,8 +20,6 @@ function reset(){
 }
 function add(){
 
-    
-
     _name = $('#name').val();
     age = $('#age').val();
     city = $('#_city').val();
@@ -30,10 +28,14 @@ function add(){
     {
         $('#name').val('');
         alert('Name must not excede 10 characters');
-        
         return;
     }
-
+    if(age < 10 || age > 50)
+    {
+        // $('#name').val('');
+        alert('Age must be 10-50');
+        return;
+    }
     if(_name== '' || age== '' || city=='')
     {
         alert('Cannot Insert Empty Values');
@@ -67,5 +69,5 @@ function handleButtons(){
 }
 
 function remove(){
-    
+
 }
