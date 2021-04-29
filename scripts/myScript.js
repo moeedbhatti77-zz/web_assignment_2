@@ -1,8 +1,7 @@
-
-var id = 0;
 ($)(function(){
     $('tbody').empty();
     $('#_update').prop('disabled',true);
+    $('#_update').click(function () { update(); });
     $('#_reset').prop('disabled',true);
     $('#_add').click(function () { add(); });
     $('#_reset').click(function (){
@@ -62,7 +61,7 @@ function add(){
         alert('Select or Enter City');
         return;
     }
-    temp = "<tr data-id = "+ (id++) +" ><td>"+_name+"</td><td>"+gender+"</td><td>"+age+"</td><td>"+city+"</td><td><a href='#' class='toUpdate'>Update</a>&nbsp; / &nbsp; <a href='#' class='toRemove'>Remove</a></td></tr>"
+    temp = "<tr><td>"+_name+"</td><td>"+gender+"</td><td>"+age+"</td><td>"+city+"</td><td><a href='#' class='toUpdate'>Update</a>&nbsp; / &nbsp; <a href='#' class='toRemove'>Remove</a></td></tr>"
     $('#t_body').append(temp);
     $('#name').val('');
     $('#age').val('');
@@ -72,8 +71,6 @@ function add(){
 }
 
 function handleButtons(){
-    
-        $('#_update').prop('disabled',true);
-        $('#_reset').prop('disabled',false);
-    
+    $('#_update').prop('disabled',true);
+    $('#_reset').prop('disabled',false);
 }
