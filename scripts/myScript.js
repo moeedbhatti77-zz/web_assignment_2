@@ -1,29 +1,41 @@
-var object;
+
 var id = 0;
 ($)(function(){
-    if(object == null || object == '')
-    {
-        $('tbody').empty();
-        $('#_update').prop('disabled',true);
-        $('#_reset').prop('disabled',true);
-    }
-    eventBinding();
+    $('tbody').empty();
+    $('#_update').prop('disabled',true);
+    $('#_reset').prop('disabled',true);
+    $('#_add').click(function () { add(); });
+    $('#_reset').click(function (){ reset();  });
 });
 function eventBinding()
 {
-    $('#_add').click(function () { add(); });
-    $('#_reset').click(function (){ reset();  });
+    $('.toRemove').click(function(){
+        $(this).parent().parent().remove();
+        if($('#t_body').html()== '' || $('#t_body').html()== null)
+        {
+            $('#_reset').prop('disabled',true);
+        }
+    });
+    $('.toUpdate').click(function(){
+        var tr =  $(this).parent().parent();
+        console.log(tr.html());
+        // console.log('working..');
+    });
 }
 function reset(){
-    object = '';
+
     $('#t_body').empty();
+    $('#_reset').prop('disabled',true);
 }
 function add(){
-
     _name = $('#name').val();
     age = $('#age').val();
     city = $('#_city').val();
-
+    if(_name== '' || age== '' || city=='' || _name== null || age== null || city == null)
+    {
+        alert('Cannot Insert Empty Values');
+        return;
+    }
     if(_name.length > 10)
     {
         $('#name').val('');
@@ -32,42 +44,22 @@ function add(){
     }
     if(age < 10 || age > 50)
     {
-        // $('#name').val('');
         alert('Age must be 10-50');
         return;
     }
-    if(_name== '' || age== '' || city=='')
-    {
-        alert('Cannot Insert Empty Values');
-        return;
-    }
 
-    // console.log(_name,age,city);
-
-    temp = "<tr data-id = "+ (id++) +" ><td>"+_name+"</td><td>Male</td><td>"+age+"</td><td>"+city+"</td><td><a href='#'>Update</a>&nbsp; / &nbsp; <a href='#'>Remove</a></td></tr>"
+    temp = "<tr data-id = "+ (id++) +" ><td>"+_name+"</td><td>Male</td><td>"+age+"</td><td>"+city+"</td><td><a href='#' class='toUpdate'>Update</a>&nbsp; / &nbsp; <a href='#' class='toRemove'>Remove</a></td></tr>"
     $('#t_body').append(temp);
     $('#name').val('');
     $('#age').val('');
     $('#_city').val('');
-    // if($('radio').is(':checked')){
-    //     console.log($(this).val());
-    // }
-    // $('input:radio').forEach(function (e) {
-    //     if(e.is(':checked'))
-    //     {
-    //         gender = e.val();
-    //     }
-    // });
+    eventBinding();
     handleButtons();
 }
+
 function handleButtons(){
-    if(object != '' || object!=null)
-    {
+    
         $('#_update').prop('disabled',true);
         $('#_reset').prop('disabled',false);
-    }
-}
-
-function remove(){
-
+    
 }
