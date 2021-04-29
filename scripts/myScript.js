@@ -5,7 +5,10 @@ var id = 0;
     $('#_update').prop('disabled',true);
     $('#_reset').prop('disabled',true);
     $('#_add').click(function () { add(); });
-    $('#_reset').click(function (){ reset();  });
+    $('#_reset').click(function (){
+         reset();
+         $('._radio').prop('checked',false);
+    });
 });
 function eventBinding()
 {
@@ -14,6 +17,7 @@ function eventBinding()
         if($('#t_body').html()== '' || $('#t_body').html()== null)
         {
             $('#_reset').prop('disabled',true);
+            $('._radio').prop('checked',false);
         }
     });
     $('.toUpdate').click(function(){
@@ -31,6 +35,7 @@ function add(){
     _name = $('#name').val();
     age = $('#age').val();
     city = $('#_city').val();
+    gender = $('._radio:checked').val();
     if(_name== '' || age== '' || city=='' || _name== null || age== null || city == null)
     {
         alert('Cannot Insert Empty Values');
@@ -47,8 +52,17 @@ function add(){
         alert('Age must be 10-50');
         return;
     }
-
-    temp = "<tr data-id = "+ (id++) +" ><td>"+_name+"</td><td>Male</td><td>"+age+"</td><td>"+city+"</td><td><a href='#' class='toUpdate'>Update</a>&nbsp; / &nbsp; <a href='#' class='toRemove'>Remove</a></td></tr>"
+    if(gender == '' || gender == null)
+    {
+        alert('Select Gender');
+        return;
+    }
+    if(city == '' || city == null)
+    {
+        alert('Select or Enter City');
+        return;
+    }
+    temp = "<tr data-id = "+ (id++) +" ><td>"+_name+"</td><td>"+gender+"</td><td>"+age+"</td><td>"+city+"</td><td><a href='#' class='toUpdate'>Update</a>&nbsp; / &nbsp; <a href='#' class='toRemove'>Remove</a></td></tr>"
     $('#t_body').append(temp);
     $('#name').val('');
     $('#age').val('');
