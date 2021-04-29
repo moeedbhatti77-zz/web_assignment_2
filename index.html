@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="/bootstrap-4.3.1-dist/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container" style="width: 50%;float: left;">
-        <table class="table table-hover">
+    <div class="container" style="width: 50%;float: left;margin-top: 5%;">
+        <table class="table table-striped">
             <thead class="thead-dark">
                     <tr>
                         <th>Name</th>
@@ -22,16 +22,70 @@
                         <th>Action</th>
                     </tr>
             </thead>
-            <tbody>
-                <tr>
+            <tbody id="t_body">
+                <!-- <tr>
                     <td>Ali</td>
                     <td>Male</td>
                     <td>25</td>
                     <td>Lahore</td>
                     <td><a href="#">Update</a>&nbsp; / &nbsp; <a href="#">Remove</a></td>
                 </tr>
+                <tr>
+                    <td>Ali</td>
+                    <td>Male</td>
+                    <td>25</td>
+                    <td>Lahore</td>
+                    <td><a href="#">Update</a>&nbsp; / &nbsp; <a href="#">Remove</a></td>
+                </tr> -->
             </tbody>
         </table>
     </div>
+    <div class="container _form rounded" style="width: 30%; margin-top: 5%;float: right;margin-right: 5%;">
+        <div class="bg-light" style="padding: 10px;">
+            <div class="form-group">
+              <label for="name"><b>Name:</b></label>
+              &nbsp; &nbsp; &nbsp; &nbsp;
+              <span style="display: inline-block;">
+                <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
+              </span>
+            </div>
+            <label><b>Gender:</b></label>
+            &nbsp; &nbsp; &nbsp;
+            <label class="radio-inline">
+                <input type="radio" name="radio" value="male">Male
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="radio" value="female">Female
+              </label>
+            <div class="form-group">
+              <label for="age"><b>Age:</b></label>
+              &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+              <span style="display: inline-block;">
+              <input type="text" class="form-control" id="age" placeholder="Enter Age" name="age">
+            </span>
+            </div>
+            <div class="form-group">
+                <label for="browsers"><b>City:</b></label>
+                &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                    <div class="dropdown" style="display: inline-block;">              
+                        <input class="form-control" list="cities" name="city" id="_city" placeholder="Lahore">
+                            <datalist id="cities">
+                                <option value="Lahore">
+                                <option value="Karachi">
+                                <option value="Faislabad">
+                                <option value="Gujranwala">
+                                <option value="Sialkot">
+                            </datalist>
+                    </div>
+            </div>
+            <center>
+                <button class="btn btn-primary" id="_add">Add</button>
+                <button class="btn btn-primary" id="_update">Update</button>
+                <button class="btn btn-primary" id="_reset">Reset</button>
+            </center>
+        </div>
+
+    </div>
+
 </body>
 </html>
