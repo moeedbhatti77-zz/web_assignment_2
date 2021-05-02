@@ -39,6 +39,7 @@ function eventBinding()
         
         $('#_update').click(function(){
             _name = $('#name').val();
+            
             age = $('#age').val();
             city = $('#_city').val();
             gender = $('._radio:checked').val();
